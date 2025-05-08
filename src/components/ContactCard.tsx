@@ -194,8 +194,8 @@ const ContactCard = ({
         
         {/* Share Modal */}
         {showShareModal && (
-          <div className="fixed inset-0 flex items-center justify-center z-[999]" onClick={handleBackdropClick}>
-            <div className="bg-white/80 backdrop-filter backdrop-blur-none p-6 rounded-[30px] w-full max-w-xs mx-4 animate-fadeIn shadow-xl border border-white/50 relative z-[1000]">
+          <div className="fixed inset-0 flex items-center justify-center z-50" onClick={handleBackdropClick}>
+            <div className="bg-white p-6 rounded-[30px] w-full max-w-xs mx-4 animate-fadeIn shadow-xl border border-white/50 relative z-[9999]">
               {!shareSuccess ? (
                 <>
                   <div>

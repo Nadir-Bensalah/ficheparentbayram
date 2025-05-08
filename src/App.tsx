@@ -42,7 +42,7 @@ function App() {
       
       {/* Modal Backdrop */}
       {showModal && (
-        <div className="fixed inset-0 z-40 bg-black/40 backdrop-blur-md"></div>
+        <div className="fixed inset-0 z-20 bg-black/40 backdrop-blur-md"></div>
       )}
       
       {/* Footer */}

@@ -52,7 +52,7 @@ const Background = () => {
   }, []);
   
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden">
+    <div className="fixed inset-0 -z-10">
       <div className="absolute inset-0 bg-gradient-to-br from-[#0b2563] via-[#1e47a8] to-[#3b82f6] animate-gradient-slow bg-gradient-size"></div>
       
       {/* Decorative circles */}

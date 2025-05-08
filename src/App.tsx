@@ -19,12 +19,12 @@ function App() {
 
 
   return (
-    <div className="relative w-full min-h-screen overflow-auto md:overflow-hidden font-poppins text-slate-800">
+    <div className="relative w-full min-h-screen font-poppins text-slate-800">
       {/* Background with particles */}
       <Background />
       
       {/* Main content - centered */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center p-4 z-10">
+      <div className="min-h-screen flex flex-col items-center justify-center p-4 z-10">
         <ContactCard 
           childName="Bayram Ben Salah"
           fatherName="Nadir"

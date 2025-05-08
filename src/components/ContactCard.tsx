@@ -84,8 +84,8 @@ const ContactCard = ({
   };
 
   return (
-    <div className="w-full max-w-sm py-10">
-      <h1 className="text-center text-xl md:text-2xl font-medium mb-6 text-white leading-tight">
+    <div className="w-full max-w-sm md:py-10">
+      <h1 className="text-center text-xl md:text-2xl font-medium mb-6 text-white leading-tight sticky top-0 pt-4 pb-2 md:static md:pt-0 md:pb-0 bg-gradient-to-b from-[#0b2563] to-transparent md:bg-none">
         Bonjour je suis Bayram, voici les infos de contact de mes parents
       </h1>
       

@@ -23,8 +23,8 @@ const ContactCard = ({
   const [currentPosition, setCurrentPosition] = useState<{latitude: number, longitude: number} | null>(null);
   const openWhatsApp = (phone: string) => {
     const cleanPhone = phone.replace(/\s+/g, '');
-    const formattedPhone = cleanPhone.startsWith('0') ? `33${cleanPhone.substring(1)}` : cleanPhone;
-    window.open(`https://wa.me/${formattedPhone}`, '_blank');
+    const formattedPhone = cleanPhone.startsWith('0') ? `+33${cleanPhone.substring(1)}` : cleanPhone;
+    window.open(`https://wa.me/${formattedPhone.replace(/\+/g, '')}`, '_blank');
   };
 
   const makePhoneCall = (phone: string) => {
@@ -61,9 +61,9 @@ const ContactCard = ({
     const message = `Voici ma position actuelle: https://www.google.com/maps?q=${latitude},${longitude}`;
     const encodedMessage = encodeURIComponent(message);
     const cleanPhone = phone.replace(/\s+/g, '');
-    const formattedPhone = cleanPhone.startsWith('0') ? `33${cleanPhone.substring(1)}` : cleanPhone;
+    const formattedPhone = cleanPhone.startsWith('0') ? `+33${cleanPhone.substring(1)}` : cleanPhone;
     
-    window.open(`https://wa.me/${formattedPhone}?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/${formattedPhone.replace(/\+/g, '')}?text=${encodedMessage}`, '_blank');
     setShareSuccess(true);
     
     // Reset success message after 3 seconds

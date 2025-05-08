@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Background from './components/Background';
 import ContactCard from './components/ContactCard';
 import Footer from './components/Footer';
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
-  
   useEffect(() => {
     // Update document title
     document.title = "Contact d'Urgence - Yacine";
@@ -18,12 +16,10 @@ function App() {
     };
   }, []);
 
-  const handleModalToggle = (isOpen: boolean) => {
-    setShowModal(isOpen);
-  };
+
 
   return (
-    <div className="relative w-full h-screen overflow-hidden font-poppins text-slate-800">
+    <div className="relative w-full min-h-screen overflow-auto md:overflow-hidden font-poppins text-slate-800">
       {/* Background with particles */}
       <Background />
       
@@ -36,14 +32,10 @@ function App() {
           motherName="Inès"
           motherPhone="06 59 93 38 62"
           address="76 Rue du Pr Christian Cabrol 80000 Amiens"
-          onModalToggle={handleModalToggle}
         />
       </div>
       
-      {/* Modal Backdrop */}
-      {showModal && (
-        <div className="fixed inset-0 z-20 bg-black/40 backdrop-blur-md"></div>
-      )}
+
       
       {/* Footer */}
       <Footer />

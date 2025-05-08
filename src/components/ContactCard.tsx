@@ -8,7 +8,6 @@ interface ContactCardProps {
   motherName: string;
   motherPhone: string;
   address: string;
-  onModalToggle?: (isOpen: boolean) => void;
 }
 
 const ContactCard = ({
@@ -17,8 +16,7 @@ const ContactCard = ({
   fatherPhone,
   motherName,
   motherPhone,
-  address,
-  onModalToggle
+  address
 }: ContactCardProps) => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [shareSuccess, setShareSuccess] = useState(false);
@@ -42,7 +40,6 @@ const ContactCard = ({
         const { latitude, longitude } = position.coords;
         setCurrentPosition({ latitude, longitude });
         setShowShareModal(true);
-        if (onModalToggle) onModalToggle(true);
         return { latitude, longitude };
       }
     } catch (error) {
@@ -54,7 +51,6 @@ const ContactCard = ({
   const shareLocation = async () => {
     const position = await getLocation();
     if (!position) return;
-    if (onModalToggle) onModalToggle(true);
   };
   
   const shareViaWhatsApp = (phone: string) => {
@@ -78,7 +74,6 @@ const ContactCard = ({
   const closeShareModal = () => {
     setShowShareModal(false);
     setShareSuccess(false);
-    if (onModalToggle) onModalToggle(false);
   };
   
   // Handle click outside modal
@@ -194,8 +189,16 @@ const ContactCard = ({
         
         {/* Share Modal */}
         {showShareModal && (
-          <div className="fixed inset-0 flex items-center justify-center z-50" onClick={handleBackdropClick}>
-            <div className="bg-white p-6 rounded-[30px] w-full max-w-xs mx-4 animate-fadeIn shadow-xl border border-white/50 relative z-[9999]">
+          <>
+            {/* Modal Backdrop */}
+            <div className="fixed inset-0 bg-black/40 backdrop-blur-md z-[9990]" onClick={handleBackdropClick}></div>
+            
+            {/* Modal Content */}
+            <div className="fixed inset-0 flex items-center justify-center z-[9999]" onClick={handleBackdropClick}>
+              <div 
+                className="bg-white p-6 rounded-[30px] w-full max-w-xs mx-4 animate-fadeIn shadow-xl border border-white/50" 
+                onClick={(e) => e.stopPropagation()}
+              >
               {!shareSuccess ? (
                 <>
                   <div>
@@ -251,8 +254,9 @@ const ContactCard = ({
                   <p className="text-gray-800 font-medium text-center text-lg">Position partagée avec succès!</p>
                 </div>
               )}
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </div>

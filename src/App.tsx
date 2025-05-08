@@ -8,11 +8,8 @@ function App() {
     // Update document title
     document.title = "Contact d'Urgence - Yacine";
     
-    // Prevent scrolling
-    document.body.style.overflow = 'hidden';
-    
     return () => {
-      document.body.style.overflow = 'auto';
+      // Cleanup if needed
     };
   }, []);
 
